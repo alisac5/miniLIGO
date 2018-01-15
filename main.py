@@ -20,7 +20,7 @@ dist_idx = 0
 while(True):
     # Read lux data
     new_lux = get_lux()
-    new_lux += get_inj() # Add injection if applicable
+    new_lux += get_offset() # Add injection if applicable
 
     # Store lux data
     lux_arr[lux_idx] = new_lux

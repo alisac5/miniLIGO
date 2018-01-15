@@ -9,7 +9,7 @@ class Injection:
         amp = 1
         for idx in range(inj_len):
             amp += amp_step
-            self.inj_arr[idx] = amp * np.sin(idx * freq_step)
+            self.signal[idx] = amp * np.sin(idx * freq_step)
         
         # Initializing the add_offset array
         # This is an array where sum[idx] is the next offset

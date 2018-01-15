@@ -20,14 +20,14 @@ class Injection:
         self.idx = 0
         self.length = inj_len
 
-    def inject():
+    def inject(self):
         self.add_offset = [
                 self.add_offset[(self.idx + i) % self.length] + self.signal[i]
                 for i in range(self.length)
                 ]
         return
 
-    def get_offset():
+    def get_offset(self):
         tmp = self.add_offset[idx]
         self.add_offset[idx] = 0
         idx += 1

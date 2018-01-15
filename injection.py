@@ -1,4 +1,5 @@
 import sys
+import numpy as np
 
 class Injection:
     def __init__(self, inj_len,  amp_step, freq_step):

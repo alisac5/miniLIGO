@@ -28,8 +28,8 @@ class Injection:
         return
 
     def get_offset(self):
-        tmp = self.add_offset[idx]
-        self.add_offset[idx] = 0
+        tmp = self.add_offset[self.idx]
+        self.add_offset[self.idx] = 0
         self.idx += 1
         if (self.idx == self.length):
             self.idx = 0

@@ -3,11 +3,14 @@ from injection import *
 from matplotlib import pyplot as plt
 from matplotlib import animation
 
+""" use a different matplotlib layout """
+plt.xkcd()
+
 """ animation constants """
 # milliseconds per second
 MILLISECONDS_PER_SECOND = 1000
 # frequency of animation updates (updates per second)
-ANIM_FREQ = 10
+ANIM_FREQ = 5
 
 """ sample background sine wave constants """
 # frequency (waves per 2*pi seconds)
@@ -55,7 +58,7 @@ def animate(args):
         fig.clf()
         x.pop(0)
         y.pop(0)
-    return plt.plot(x, y, color='g')
+    return plt.plot(x, y, color='b')
 
 # start the visualization
 anim = animation.FuncAnimation(fig, animate, frames=frames, interval=((1.0 / ANIM_FREQ) * MILLISECONDS_PER_SECOND))

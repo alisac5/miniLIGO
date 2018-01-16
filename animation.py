@@ -3,6 +3,18 @@ from injection import *
 from matplotlib import pyplot as plt
 from matplotlib import animation
 
+""" animation constants """
+# milliseconds per second
+MILLISECONDS_PER_SECOND = 1000
+# frequency of animation updates (updates per second)
+ANIM_FREQ = 10
+
+""" sample background sine wave constants """
+# frequency (waves per 2*pi seconds)
+SAMPLE_FREQ = 1 
+# amplitude
+SAMPLE_AMP = 5
+
 # create new injection
 injection = Injection(100, 0.05, 0.1)
 
@@ -15,11 +27,12 @@ class DataGenerator(object):
         self.x = 0
 
     def __call__(self):
-        self.x += 1
-        if self.x == 140 or self.x == 180:   # sample injections
-            injection.inject()
+        delta_x = (1.0 / ANIM_FREQ)
+        self.x += delta_x 
+#        if ((self.x >= 13900.9 and self.x <= 14000.1) or (self.x >= 17900.9 and self.x <= 18000.1)):   # sample injections
+#            injection.inject()
         # add "real data" (represented as a smooth sine function here) with injected data
-        return self.x, math.sin(self.x / 10.0) + injection.get_offset()   
+        return self.x, SAMPLE_AMP * math.sin(SAMPLE_FREQ * self.x) + injection.get_offset()   
 
 # create new DataGenerator
 data_gen = DataGenerator()
@@ -45,5 +58,5 @@ def animate(args):
     return plt.plot(x, y, color='g')
 
 # start the visualization
-anim = animation.FuncAnimation(fig, animate, frames=frames, interval=100)
+anim = animation.FuncAnimation(fig, animate, frames=frames, interval=((1.0 / ANIM_FREQ) * MILLISECONDS_PER_SECOND))
 plt.show()

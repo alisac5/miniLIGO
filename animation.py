@@ -2,6 +2,7 @@ import math
 from injection import *
 from matplotlib import pyplot as plt
 from matplotlib import animation
+import seaborn as sns; sns.set_style('darkgrid')
 
 """ use a different matplotlib layout """
 plt.xkcd()

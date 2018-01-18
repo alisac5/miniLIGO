@@ -2,14 +2,17 @@ import sys
 import numpy as np
 
 class Injection:
-    def __init__(self, inj_len,  amp_step, freq_step):
+    def __init__(self, inj_len, amp_step, freq_step):
         # Initializing the injection signal array
         # This is a fixed array which holds the signal
         self.signal = np.zeros(inj_len)    
         amp = 1
         for idx in range(inj_len):
-            amp += amp_step
-            self.signal[idx] = amp * np.sin(idx * freq_step)
+            frac = idx / inj_len
+            freq = np.exp(np.max(idx-10, 0)/50) + 0.5
+            amp = freq
+            #amp += amp_step
+            self.signal[idx] = amp * np.sin(freq * idx / 10)
         
         # Initializing the add_offset array
         # This is an array where sum[idx] is the next offset

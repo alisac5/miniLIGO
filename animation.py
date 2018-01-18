@@ -1,17 +1,18 @@
 import math
+import seaborn as sns
+import os
 from injection import *
 from matplotlib import pyplot as plt
 from matplotlib import animation
-import seaborn as sns; sns.set_style('darkgrid')
 
 """ use a different matplotlib layout """
-#plt.xkcd()
+sns.set_style('darkgrid')
 
 """ animation constants """
 # milliseconds per second
 MILLISECONDS_PER_SECOND = 1000
 # frequency of animation updates (updates per second)
-ANIM_FREQ = 50
+ANIM_FREQ = 15
 
 """ sample background sine wave constants """
 # frequency (waves per 2*pi seconds)
@@ -33,8 +34,10 @@ class DataGenerator(object):
     def __call__(self):
         delta_x = (1.0 / ANIM_FREQ)
         self.x += delta_x 
-#        if ((self.x >= 13900.9 and self.x <= 14000.1) or (self.x >= 17900.9 and self.x <= 18000.1)):   # sample injections
-#            injection.inject()
+        if ((self.x >= 14.9 and self.x <= 15.1) or (self.x >= 19.9 and self.x <= 20.1)):   # sample injections
+            injection.inject()
+            os.system('mpg123 -q injection_audio.mp3 &')   # play audio on raspi
+#            os.system('afplay injection_audio.mp3 &')   # play audio on macOS
         # add "real data" (represented as a smooth sine function here) with injected data
         return self.x, SAMPLE_AMP * math.sin(SAMPLE_FREQ * self.x) + injection.get_offset()   
 

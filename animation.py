@@ -5,23 +5,23 @@ from matplotlib import animation
 import seaborn as sns; sns.set_style('darkgrid')
 
 """ use a different matplotlib layout """
-plt.xkcd()
+#plt.xkcd()
 
 """ animation constants """
 # milliseconds per second
 MILLISECONDS_PER_SECOND = 1000
 # frequency of animation updates (updates per second)
-ANIM_FREQ = 5
+ANIM_FREQ = 50
 
 """ sample background sine wave constants """
 # frequency (waves per 2*pi seconds)
 SAMPLE_FREQ = 1 
 # amplitude
-SAMPLE_AMP = 5
+SAMPLE_AMP = 0 #5
 
 # create new injection
 injection = Injection(100, 0.05, 0.1)
-
+injection.inject()
 """
 Data Generator class. Initialize with a base value, and then repeatedly update the values
 that are generated.

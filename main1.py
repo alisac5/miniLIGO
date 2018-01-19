@@ -9,10 +9,10 @@ def calibrate(lux, full_wavelength):
     return full_wavelength*10**-9*530 + np.random.randn()*lux*10**-9*100
 def inject():
     x = np.linspace(0,2,21)
-    y = np.sin(x)*x
+    y = np.sin(x**2)*x*10**-8
     for i in range()
 
-PIO.setmode(GPIO.BCM)
+GPIO.setmode(GPIO.BCM)
 GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 i = 0
@@ -28,9 +28,14 @@ while True:
     # check for trigger
     input_state = GPIO.input(18)
     if input_state == False:
-        inject()
-
-
+        x,y = inject()
+        lsti = []
+        lstj = []
+        for i,j in zip(x,y):
+            lsti.append(i)
+            lstj.append(j)
+            plt.plot(lsti,lstj)
+            time.sleep(0.1)
 
     strain = calibrate(lux,full_wavelength)
 

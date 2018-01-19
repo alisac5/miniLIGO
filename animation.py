@@ -18,11 +18,11 @@ ANIM_FREQ = 15
 # frequency (waves per 2*pi seconds)
 SAMPLE_FREQ = 1 
 # amplitude
-SAMPLE_AMP = 5
+SAMPLE_AMP = 0 #5
 
 # create new injection
 injection = Injection(100, 0.05, 0.1)
-
+injection.inject()
 """
 Data Generator class. Initialize with a base value, and then repeatedly update the values
 that are generated.

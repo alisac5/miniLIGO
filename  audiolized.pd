@@ -1,0 +1,20 @@
+#N canvas 180 225 631 624 10;
+#X obj 107 362 dac~;
+#X obj 245 157 netreceive 3000;
+#X obj 245 217 route 1;
+#X obj 243 279 s freq;
+#X text 243 130 Receive from port 3000;
+#X text 78 396 Generate sound;
+#X obj 19 11 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X msg 18 76 \; pd dsp \$1;
+#X obj 109 207 osc~ 440;
+#X obj 107 153 r freq;
+#X obj 200 56 vsl 15 128 440 2220 0 0 empty empty empty 0 -9 0 10 -260097
+-1 -1 0 1;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 6 0 7 0;
+#X connect 8 0 0 0;
+#X connect 8 0 0 1;
+#X connect 10 0 8 0;
